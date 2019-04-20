@@ -1,0 +1,7 @@
+The following game is a classic remake of game of Snakes 
+Instructionn to play :-
+WSAD to move
+Dont hit the corners 
+Dont eat yourself
+Eat the blue fruit
+Enjoy!! 
