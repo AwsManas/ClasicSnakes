@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Apr 11 17:22:55 2019
+Created on Fri Apr 19 17:22:55 2018
 
 @author: Manas Sharma
 """
@@ -43,6 +43,20 @@ display.bgcolor("BLACK")
 display.setup(width=900,height=600)
 display.tracer(0) 
 """Stops the animation"""
+#Defining a level
+xmaze=[100,100,100,100,160,160,160,160,120,120,120,120,140,140,140,140]
+ymaze=[50,70,90,110,90,70,50,110,90,70,50,110,90,70,50,110]
+lvl=[]
+for i in range(len(xmaze)): 
+    level = turtle.Turtle()
+    level.speed(0)
+    level.shape("square")
+    level.color("white")
+    level.penup()
+    level.direction = "stop"
+    level.goto(xmaze[i],ymaze[i])
+    lvl.append(level);
+#ennddesign
 eyes = turtle.Turtle()
 init()
 body = []
@@ -85,8 +99,21 @@ while 1:
         score+=1
         draw.clear()
         draw.write("Score = {}".format(score), align="center", font=("Courier", 20, "normal"))
-        foodx = random.randint(-440,440)
-        foody = random.randint(-290,290)
+        flag=1
+        while flag==1:    
+            foodx = random.randint(-440,440)
+            foody = random.randint(-290,290)
+            temp = turtle.Turtle()
+            temp.speed(0)
+            temp.penup()
+            temp.hideturtle()
+            temp.goto(foodx,foody)
+            cnt=0
+            for i in lvl:
+                if temp.distance(i)>20:
+                    cnt+=1;
+            if cnt==len(lvl):
+                flag=0
         food.goto(foodx,foody)
         organ = turtle.Turtle()
         organ.speed(0) #0 lag 
@@ -100,6 +127,15 @@ while 1:
         body[0].goto(eyes.xcor(),eyes.ycor())    
     move()
     for i in body:
+        if i.distance(eyes)<20:
+            score=0
+            time.sleep(2)
+            eyes.direction="stop"
+            for i in body:
+                i.goto(1000,1000)
+            eyes.goto(0,0)    
+            body=[]
+    for i in lvl:
         if i.distance(eyes)<20:
             score=0
             time.sleep(2)
