@@ -5,3 +5,7 @@ Dont hit the corners
 Dont eat yourself
 Eat the blue fruit
 Enjoy!! 
+---------ver 1.5------
+Added obstacle (white thing)
+do not hit it
+Also ver 2 within a week 
